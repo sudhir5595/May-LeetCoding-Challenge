@@ -1,17 +1,22 @@
+// O(n) - Time complexity 
+// O(1) - Space complexity
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
         int res = 0;
-        int n  = nums.size();
-        unordered_map <int, int> mp;
+        int count  = 0;
         for(int i = 0; i<nums.size(); i++){
-            mp[nums[i]]++;
-        }
-        for(int i = 0; i<nums.size(); i++){
-            if(mp[nums[i]] > (n/2)){
-                return nums[i];
+            if(count == 0){
+                res = nums[i];
+            }
+            if(res == nums[i]){
+                count++;
+            }
+            else{
+                count--;
             }
         }
-        return 1;
+        return res;
     }
 };
